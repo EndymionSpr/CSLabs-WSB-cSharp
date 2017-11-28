@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            uint a, b;
+            A:
+            while (true)
+            {
+                Console.WriteLine("Podaj a i b: ");
+                if (uint.TryParse(Console.ReadLine(), out a) | uint.TryParse(Console.ReadLine(), out b)) { break; }
+                else Console.WriteLine("Błedna liczba!");
+            }
+            if (a == 0 || b == 0) { Console.WriteLine("Błędna liczba! "); goto A; }
+            while (a != b)
+            {
+                if (a > b)
+                    a -= b;
+                else
+                    b -= a;
+            }
+
+            Console.WriteLine("Największy wspólny dzielnik (NWD) to: " + a);
+            Console.ReadKey();
+        }
+    }
+}
