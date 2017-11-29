@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            uint Ilość, Min=0, Max = 0, Zmienna;
+            while (true)
+            {
+                Console.WriteLine("Ile liczb chcesz wprowadzić <2,10>");
+                if (uint.TryParse(Console.ReadLine(), out Ilość) && Ilość > 1 && Ilość < 11) break;
+                else Console.WriteLine("Podaj poprawną liczbę z zakresu <2,10>");
+            }
+            for(uint i = 0; i < Ilość; i++)
+            {
+                
+                while (true)
+                {
+                    Console.WriteLine("Podaj liczbę [{0}]=", i+1);
+                    if (uint.TryParse(Console.ReadLine(), out Zmienna)) break;
+                    else Console.WriteLine("Podaj poprawną liczbe całkowitą");
+                }
+                if (i == 0) Min = Zmienna;
+                if (Min > Zmienna) Min = Zmienna;
+                if (Max < Zmienna) Max = Zmienna;
+            }
+            Console.WriteLine("Min:{0}", Min);
+            Console.WriteLine("Max:{0}", Max);
+            Console.ReadKey();
+        }
+    }
+}
