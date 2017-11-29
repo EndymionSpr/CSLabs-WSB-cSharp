@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            uint Ilość, Parzyste = 0, NieParzyste = 0,Zmienna;
+            while (true)
+            {
+                Console.WriteLine("Ile liczb chcesz wprowadzić <2,10>");
+                if (uint.TryParse(Console.ReadLine(), out Ilość) && Ilość > 1 && Ilość < 11) break;
+                else Console.WriteLine("Podaj poprawną liczbę z zakresu <2,10>");
+            }
+            for(uint i = 0; i < Ilość; i++)
+            {
+                while (true)
+                {
+                    Console.WriteLine("Podaj liczbę [{0}]=", i+1);
+                    if (uint.TryParse(Console.ReadLine(), out Zmienna)) break;
+                    else Console.WriteLine("Podaj poprawną liczbę całkowitą");
+                }
+                if (Zmienna % 2 == 0) Parzyste++;
+                else NieParzyste++;
+            }
+            Console.WriteLine("Parzystych:{0}", Parzyste);
+            Console.WriteLine("Nieparzystych:{0}", NieParzyste);
+            Console.ReadKey();
+        }
+    }
+}
