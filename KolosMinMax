@@ -10,20 +10,21 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            uint Ilość, Min=0, Max = 0, Zmienna;
+            int Ilość, Min = 0, Max = 0, Zmienna;
+            
             while (true)
             {
                 Console.WriteLine("Ile liczb chcesz wprowadzić <2,10>");
-                if (uint.TryParse(Console.ReadLine(), out Ilość) && Ilość > 1 && Ilość < 11) break;
+                if (int.TryParse(Console.ReadLine(), out Ilość) && Ilość > 1 && Ilość < 11) break;
                 else Console.WriteLine("Podaj poprawną liczbę z zakresu <2,10>");
             }
-            for(uint i = 0; i < Ilość; i++)
+            for (int i = 0; i < Ilość; i++)
             {
-                
+
                 while (true)
                 {
-                    Console.WriteLine("Podaj liczbę [{0}]=", i+1);
-                    if (uint.TryParse(Console.ReadLine(), out Zmienna)) break;
+                    Console.WriteLine("Podaj liczbę [{0}]=", i + 1);
+                    if (int.TryParse(Console.ReadLine(), out Zmienna)) break;
                     else Console.WriteLine("Podaj poprawną liczbe całkowitą");
                 }
                 if (i == 0) Min = Zmienna;
