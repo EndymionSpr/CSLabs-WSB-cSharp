@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Cat kot = new Cat();
+            kot.color = "Black";
+            kot.name = "Peter";
+            kot.dajGłos();
+            Console.ReadKey();
+        }
+
+        public class Cat
+        {
+
+            public string name;
+            public string color;
+            public string spicies; 
+
+            public void dajGłos()
+            {
+                Console.WriteLine("Kot {0} powiedział miau", name );
+
+            }
+            
+            
+        }
+    }
+}
