@@ -18,6 +18,11 @@ namespace ConsoleApp1
                 else Console.WriteLine("Nie poprawna liczba");
             }
             string[] Tablica = new string[LiczbaLiczb];
+            for(int i = 0; i < Tablica.Length; i++)
+            {
+                Console.WriteLine("Podaj marke, model i rok produkcji oddzielone średnikami: xx;xx;xx");
+                Tablica[i] = Console.ReadLine();
+            }
         }
     }
 }
