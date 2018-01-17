@@ -3,26 +3,65 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
-namespace ConsoleApp1
+namespace grupa1
 {
     class Program
     {
+        public struct auto //deklaracja typu strukturalnego
+        {
+            public string model;
+            public string marka;
+            public string rokprodukcji;
+        }
         static void Main(string[] args)
         {
-            uint LiczbaLiczb;
-            while (true)
+            try
             {
-                Console.WriteLine("Podaj ilość samochodów");
-                if (uint.TryParse(Console.ReadLine(), out LiczbaLiczb)) break;
-                else Console.WriteLine("Nie poprawna liczba");
+                string nazwa;
+                int liczba;
+                while (true)//ile osób wprowadzić
+                {
+                    Console.Write("Podaj ile samochodów chcesz wprowadzić(max 10): ");
+                    if (int.TryParse(Console.ReadLine(), out liczba) && liczba > 0 && liczba <= 10) ;
+                    Console.WriteLine("Niepoprawna liczba aut");
+                }
+
+                Console.Write("Podaj nazwę pliku: ");
+                nazwa = Console.ReadLine();
+                StreamWriter zapis = new StreamWriter(nazwa);
+                auto[] tablica = new auto[5];
+
+                for (int i = 0; i < liczba; i++)
+                {
+                    Console.WriteLine("Podaj dane samochodu nr. " + (i + 1));
+                    Console.Write("Podaj model: ");
+                    tablica[i].model = Console.ReadLine();
+                    Console.Write("Podaj markę: ");
+                    tablica[i].marka = Console.ReadLine();
+                    Console.Write("Podaj rok produkcji: ");
+                    tablica[i].rokprodukcji = Console.ReadLine();
+                    zapis.WriteLine(tablica[i].model + ", " + tablica[i].rokprodukcji + ", " + tablica[i].marka);
+                }
+                zapis.Close();
+                Console.ReadKey();
             }
-            string[] Tablica = new string[LiczbaLiczb];
-            for(int i = 0; i < Tablica.Length; i++)
+            catch (System.FormatException)
             {
-                Console.WriteLine("Podaj marke, model i rok produkcji oddzielone średnikami: xx;xx;xx");
-                Tablica[i] = Console.ReadLine();
+                Console.WriteLine("To nie jest liczba");
+                Console.ReadKey();
+
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("Wprowadzona liczba jest poza dopuszczalnym zakresem");
+            }
+            catch (ArgumentNullException)
+            {
+                Console.WriteLine("Napotkano koniec strumienia");
             }
         }
+
     }
 }
