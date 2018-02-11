@@ -10,13 +10,13 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            
+
             string str;
-            uint DolnaGranica,GórnaGranica,ZmiennaPomocnicza;
+            uint DolnaGranica, GórnaGranica, ZmiennaPomocnicza;
             A:
             while (true)
-                
-            try
+
+                try
                 {
                     Console.WriteLine("Podaj dolną granicę: ");
                     str = Console.ReadLine();
@@ -26,33 +26,35 @@ namespace ConsoleApplication1
                     GórnaGranica = uint.Parse(str);
                     break;
                 }
-                catch(FormatException)
+                catch (FormatException)
                 {
                     Console.WriteLine("Błędna liczba! ");
                 }
-            catch(OverflowException)
+                catch (OverflowException)
                 {
                     Console.WriteLine("Błędna liczba! ");
                 }
-            catch(ArgumentNullException)
+                catch (ArgumentNullException)
                 {
                     Console.WriteLine("Błędna liczba! ");
                 }
             if (DolnaGranica > GórnaGranica) { Console.WriteLine("Górna granica nie może być mniejsza niż dolna! "); goto A; }
             uint suma = 0;
-            
+
             for (uint i = DolnaGranica; i < GórnaGranica + 1; i++)
             {
                 ZmiennaPomocnicza = i;
-                while (ZmiennaPomocnicza!=0)
+                while (ZmiennaPomocnicza != 0)
                 {
                     suma += ZmiennaPomocnicza % 10;
                     ZmiennaPomocnicza /= 10;
-                    
-                }Console.WriteLine("Suma cyfr liczby {0} wynosi {1} ", i ,suma);
-                
+
+                }
+                Console.WriteLine("Suma cyfr liczby {0} wynosi {1} ", i, suma);
+                suma = 0;
+
             }
-            
+
             Console.ReadKey();
         }
     }
